@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Details</title>
+    <style>
+        body {
+  background-image: url('https://img.freepik.com/free-vector/blue-curve-frame-template_53876-116707.jpg');
+
+margin:10px;
+      background-size: cover;
+    }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #c8e8f6; /* Change the background color here */
+      }
+      .id-card {
+        border: 4px solid rgb(120, 167, 214);
+        border-style:double;
+        padding: 70px;
+        width: 250px;
+        text-align: center;
+        margin: 0 auto;
+        background-color: white; /* Change the ID card background color here */
+      }
+      .avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+      .details {
+        text-align: left;
+      }
+      .details p {
+        margin: 5px 0;
+      }
+      .button-link {
+    display: inline-block;
+    padding: 5px 0px;
+    background-color: #aeceed;
+    color: black;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+      
+    </style>
+  </head>
+  <body>
+    <center>
+      <br /><br /><br />
+      <div class="id-card">
+        <h1>ID CARD</h1>
+        <img
+          class="avatar"
+          src="{{ url_for('static', filename=avatar_filename) }}"
+          alt="Avatar"
+        />
+        <div class="details">
+          <p><strong>Name:</strong> {{ student.name }}</p>
+          <p><strong>Age:</strong> {{ student.age }}</p>
+          <p><strong>Gender:</strong> {{ student.gender }}</p>
+          <p><strong>Email:</strong> {{ student.mail }}</p>
+          <p><strong>Phone Number:</strong> {{ student.phone_number }}</p>
+          <p><strong>Course:</strong> {{ student.course }}</p>
+        </div>
+      </div>
+      <br /><br />
+      <a href="{{ url_for('login') }}" class="button-link">HOME </a>
+      <p><a href="{{ url_for('student') }}" class="button-link"> BACK TO DASHBOARD</p>
+    </center>
+    <script>
+      function validateEmail(email) {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+      }
+      function validatePhoneNumber(phoneNumber) {
+        var re = /^[0-9]{10}$/;
+        return re.test(phoneNumber);
+      }
+      function validateStudentDetails() {
+        var email = "{{ student.mail }}";
+        var phoneNumber = "{{ student.phone_number }}";
+        if (!validateEmail(email)) {
+          alert("Invalid email address.");
+          return false;
+        }
+        if (!validatePhoneNumber(phoneNumber)) {
+          alert("Invalid phone number.");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>

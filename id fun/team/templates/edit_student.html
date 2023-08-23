@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Student</title>
+</head>
+<body>
+    <h1>Edit Student</h1>
+    <form method="POST">
+        <label>Name:</label>
+        <input type="text" name="edited_name" value="{{ student.name }}"><br>
+        <label>Age:</label>
+        <input type="text" name="edited_age" value="{{ student.age }}"><br>
+        <label>Gender:</label>
+        <input type="text" name="edited_gender" value="{{ student.gender }}"><br>
+        <label>Email:</label>
+        <input type="email" name="edited_mail" value="{{ student.mail }}"><br>
+        <label>Phone Number:</label>
+        <input type="tel" name="edited_phone_number" value="{{ student.phone_number }}"><br>
+        <label>Course:</label>
+        <input type="text" name="edited_course" value="{{ student.course }}"><br>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

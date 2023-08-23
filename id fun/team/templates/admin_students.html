@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <style>
+        .id-card {
+            border: 1px solid #b0e0f1;
+            padding: 20px;
+            width: 300px;
+            margin: 10px;
+            display: inline-block;
+            background-color: #cce5f0;
+        }
+        .avatar {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Admin Panel</h1>
+    <h2>Student List</h2>
+    </center>
+    <div class="id-card-container">
+        {% for student in students %}
+        <div class="id-card">
+            <h3>{{ student.name }}</h3>
+            <img class="avatar" src="{{ url_for('static', filename=student.avatar_filename) }}" alt="Avatar">
+            <p><strong>Age:</strong> {{ student.age }}</p>
+            <p><strong>Gender:</strong> {{ student.gender }}</p>
+            <p><strong>Email:</strong> {{ student.mail }}</p>
+            <p><strong>Phone Number:</strong> {{ student.phone_number }}</p>
+            <p><strong>Course:</strong> {{ student.course }}</p>
+            <div class="action-buttons">
+                <a class="edit-button" href="{{ url_for('edit_student', index=loop.index0) }}">Edit</a>
+                <form class="delete-form" action="{{ url_for('delete_student', index=loop.index0) }}" method="post">
+                    <button class="delete-button" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        function editStudent(name) {
+            // Implement edit functionality here, e.g., show form to edit student data
+            // You can use AJAX or other techniques to achieve this
+            console.log('Edit:', name);
+        }
+
+        function deleteStudent(name) {
+            // Implement delete functionality here, e.g., show confirmation dialog and delete student
+            // You can use AJAX or other techniques to achieve this
+            console.log('Delete:', name);
+        }
+    </script>
+</body>
+</html>
